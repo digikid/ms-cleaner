@@ -1,0 +1,42 @@
+@import 'partials';
+
+.outdated {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: $gutter;
+    background-color: $white;
+
+    .is-outdated & {
+        display: flex;
+    }
+
+    &__wrapper {
+        text-align: center;
+    }
+
+    &__title {
+        font-size: 42px;
+        font-weight: 900;
+        color: $primary;
+        margin-bottom: 24px;
+    }
+
+    &__text {
+        p {
+            &:first-child {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 7px;
+            }
+        }
+    }
+}

@@ -1,0 +1,242 @@
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:color';
+@import 'partials';
+
+$actions: clean copy code reset settings;
+
+.cleaner {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    &__toolbar {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: $gutter;
+        margin-left: $gutter;
+        padding: 12px $gutter;
+        border-radius: $radius;
+        background-color: var(--color-editor-bg);
+    }
+
+    &__badge {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.15;
+
+        @include red-gradient();
+
+        @media screen and (max-width: 360px) {
+            display: none;
+        }
+    }
+
+    &__logo {
+        vertical-align: revert;
+        display: inline-block;
+        height: 24px;
+        margin-right: 7px;
+
+        @include mo(xs) {
+            display: none;
+        }
+
+        @media screen and (max-width: 360px) {
+            display: inline-block;
+        }
+    }
+
+    &__slogan {
+        color: var(--color-light-text);
+        margin-left: 15px;
+
+        @include ms(lg) {
+            display: none;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+    }
+
+    &__action {
+        font-size: 24px;
+        line-height: 1;
+        color: var(--color-text) !important;
+        opacity: 0.7;
+
+        @include transition(opacity, color);
+
+        @for $i from 1 through length($actions) {
+            $action: list.nth($actions, $i);
+
+            &--#{$action} {
+                @include icomoon($action);
+            }
+        }
+
+        @include hover() {
+            opacity: 1;
+        }
+
+        &.is-disabled {
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        &.is-active {
+            color: var(--color-green);
+        }
+    }
+
+    &__mode,
+    &__action {
+        margin-left: 24px;
+
+        @include mo(xs) {
+            margin-left: 4vw;
+        }
+
+        @media screen and (max-width: 360px) {
+            margin-left: 6vw;
+        }
+    }
+
+    &__params {
+        position: absolute;
+        z-index: 2;
+        top: calc(100% + #{math.div($gutter, 1)});
+        right: 0;
+        display: none;
+        padding: $gutter 20px 20px;
+        border-radius: $radius;
+        background-color: var(--color-bg);
+
+        @include shadow();
+    }
+
+    &__param {
+        font-size: 14px;
+        margin-bottom: 16px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__checkbox {
+        vertical-align: top;
+        position: absolute;
+        z-index: -1;
+        width: 17px;
+        height: 17px;
+        margin: 12px 3px 0 24px;
+        opacity: 0;
+
+        & + label {
+            font-weight: inherit;
+            line-height: 1.75;
+            position: relative;
+            display: block;
+            margin: 0;
+            padding: 0 0 0 60px;
+            cursor: pointer;
+
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+            }
+
+            &:before {
+                top: 1px;
+                left: 0;
+                width: 48px;
+                height: 24px;
+                border-radius: 12px;
+                background-color: var(--color-checkbox-bg);
+
+                @include transition(background-color 0.2s);
+            }
+
+            &:after {
+                top: 3px;
+                left: 2px;
+                width: 20px;
+                height: 20px;
+                // box-shadow: 0 2px 5px rgba($black, 0.3);
+                border-radius: 10px;
+                background-color: var(--color-white);
+
+                @include transition(left 0.2s);
+                @include shadow();
+            }
+
+            span {
+                opacity: 0.4;
+
+                @include transition(opacity);
+            }
+        }
+
+        &:checked {
+            & + label {
+                opacity: 1;
+
+                &:before {
+                    background: var(--color-green);
+                }
+
+                &:after {
+                    left: 26px;
+                }
+
+                span {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__main {
+        position: relative;
+        flex-grow: 1;
+        padding: 15px;
+    }
+
+    &__editor,
+    &__code {
+        font-size: 18px;
+        line-height: 1.5;
+        color: var(--color-text);
+        position: absolute;
+        top: $gutter;
+        right: $gutter;
+        bottom: $gutter;
+        left: $gutter;
+        overflow: auto;
+        width: calc(100% - #{$gutter * 2});
+        height: calc(100% - #{$gutter * 2});
+        padding: $gutter;
+        border: 0;
+        border-radius: $radius;
+        outline: none;
+        background-color: var(--color-editor-bg);
+        appearance: none;
+    }
+
+    &__code {
+        display: none;
+        resize: none;
+    }
+}

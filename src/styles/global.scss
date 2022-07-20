@@ -1,0 +1,181 @@
+@use 'sass:color';
+@import 'partials';
+
+:root {
+    --color-primary: #{$primary};
+    --color-bg: #{$white};
+    --color-light-bg: #{$gray-200};
+    --color-white: #{$white};
+    --color-black: #{$black};
+    --color-red: #{$red};
+    --color-yellow: #{$yellow};
+    --color-green: #{$green};
+    --color-text: #{$text};
+    --color-light-text: #{$gray-300};
+    --color-toolbar-bg: #{$toolbar-bg};
+    --color-editor-bg: #{$editor-bg};
+    --color-checkbox-bg: #{$checkbox-bg};
+
+    &.dark-mode {
+        --color-bg: #{$dark-bg};
+        --color-border: #{$toolbar-bg-dark};
+        --color-light-bg: #{$gray-900};
+        --color-text: #{$gray-100};
+        --color-light-text: #{$gray-800};
+        --color-toolbar-bg: #{$toolbar-bg-dark};
+        --color-editor-bg: #{$editor-bg-dark};
+        --color-checkbox-bg: #{$checkbox-bg-dark};
+    }
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font: #{$font-size}/#{$line-height} $font-family;
+    color: var(--color-text);
+    opacity: 0;
+    background-color: var(--color-bg);
+
+    @include transition(opacity);
+
+    &:before {
+        display: none;
+        visibility: hidden;
+
+        @each $breakpoint, $width in $breakpoints {
+            @include mo(#{$breakpoint}) {
+                content: '#{$breakpoint}';
+            }
+        }
+    }
+
+    &.is-locked {
+        overflow: hidden;
+    }
+
+    &.is-ready {
+        opacity: 1;
+    }
+}
+
+a,
+button {
+    @include transition(color, border-color, background, opacity);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    outline: 0 !important;
+
+    @include transition(color background, 0.15s);
+
+    @include hover() {
+        color: color.adjust($primary, $lightness: 10%);
+        text-decoration: none;
+    }
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+
+svg {
+    fill: none;
+}
+
+ul,
+ol {
+    list-style: none;
+
+    &, li {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+code {
+    font-size: 70%;
+    color: var(--color-primary);
+    vertical-align: middle;
+    margin: 0 5px;
+    padding: 5px 8px;
+    border-radius: 4px;
+    background-color: var(--color-light-bg);
+}
+
+hr {
+    height: 1px;
+    border: 0;
+    background-color: var(--color-light-bg);
+}
+
+figure {
+    overflow: hidden;
+}
+
+h1, h2, h3 {
+    font-family: Golos, sans-serif;
+    font-weight: 700;
+}
+
+.wrapper,
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.wrapper {
+    position: relative;
+}
+
+.main {
+    flex-grow: 1;
+    padding-top: 15px;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $gutter;
+    padding-left: $gutter;
+
+    @include ml(xs) {
+        width: 750px;
+    }
+
+    @include ml(md) {
+        width: 970px;
+    }
+
+    @include ml(lg) {
+        width: 1200px;
+    }
+}

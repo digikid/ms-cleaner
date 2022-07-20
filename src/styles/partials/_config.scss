@@ -1,0 +1,73 @@
+@use 'sass:color';
+@import 'functions';
+
+$breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px);
+$containers: (sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1320px);
+
+$gutter: 15px;
+
+$font-family: Golos, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$font-size: 16px;
+$font-weight: normal;
+$line-height: 1.5;
+
+$white: #fff;
+$black: #000;
+$blue: #037ffe;
+$red: #f23e30;
+$green: #00d445;
+$dark-bg: #1c1c1c;
+$light-bg: #ededef;
+$yellow: #ffdc5b;
+
+$primary: $red;
+$secondary: $white;
+
+$gray: #999;
+$gray-50: color-palette($gray, 50);
+$gray-100: color-palette($gray, 100);
+$gray-200: color-palette($gray, 200);
+$gray-300: color-palette($gray, 300);
+$gray-400: color-palette($gray, 400);
+$gray-500: color-palette($gray, 500);
+$gray-600: color-palette($gray, 600);
+$gray-700: color-palette($gray, 700);
+$gray-800: color-palette($gray, 800);
+$gray-900: color-palette($gray, 900);
+
+$text: #162c35;
+$text-gray: #797979;
+$toolbar-bg: color.adjust($gray-200, $lightness: 5%);
+$toolbar-bg-dark: color.adjust($black, $lightness: 7%);
+$editor-bg: #f5f6f7;
+$editor-bg-dark: #252526;
+$checkbox-bg: color.adjust($gray-200, $lightness: 5%);
+$checkbox-bg-dark: color.adjust($black, $lightness: 15%);
+
+$duration: 0.15s;
+$easing: ease-in-out;
+
+$shadow-x: 0;
+$shadow-y: 10px;
+$shadow-blur: 50px;
+$shadow-spread: 0;
+$shadow-color: $black;
+$shadow-depth: 0.1;
+
+$disabled-opacity: 0.2;
+
+$radius: 6px;
+
+$spinner-size: 4em;
+$spinner-color: $primary;
+
+$burger-width: 30px;
+$burger-thickness: 5px;
+$burger-gutter: 3px;
+$burger-color: $primary;
+$burger-border-radius: 0;
+$burger-transition-duration: 0.3s;
+
+$input-radius: $radius;
+$input-border: $toolbar-bg;
+$input-padding: 12px 16px;

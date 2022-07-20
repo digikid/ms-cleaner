@@ -1,0 +1,23 @@
+@import 'partials';
+
+.grid {
+    margin-bottom: -24px;
+
+    @include ml(md) {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -$gutter;
+        margin-left: -$gutter;
+    }
+
+    .grid__item {
+        width: 100%;
+        margin-bottom: 24px;
+
+        @include ml(md) {
+            width: calc((100% - #{$gutter * 4}) / 2);
+            margin-right: $gutter;
+            margin-left: $gutter;
+        }
+    }
+}

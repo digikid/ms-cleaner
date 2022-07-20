@@ -1,0 +1,54 @@
+@import 'partials';
+
+.section {
+    padding-bottom: 24px;
+
+    @include ml(sm) {
+        padding-bottom: 42px;
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.35;
+        margin-bottom: 18px;
+    }
+
+    &__content {
+        p, li {
+            line-height: 1.5;
+        }
+
+        p {
+            margin-bottom: 1em;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        ul {
+            list-style-position: inside;
+            list-style-type: circle;
+
+            li {
+                margin-bottom: 0.5em;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &--facilities {
+        img {
+            float: right;
+            max-width: 25%;
+
+            @include ms(lg) {
+                display: none;
+            }
+        }
+    }
+}

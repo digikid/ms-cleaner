@@ -1,0 +1,46 @@
+{
+  "name": "ms-cleaner",
+  "description": "MS Office / HTML cleaning tool",
+  "version": "1.0.0",
+  "type": "module",
+  "homepage": "https://digikid.github.io/ms-cleaner",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digikid/ms-cleaner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/digikid/ms-cleaner/issues"
+  },
+  "author": "Alexander Dovlatov <dev@digkid.ru> (https://dev.digikid.ru/)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "deploy": "sh deploy.sh"
+  },
+  "devDependencies": {
+    "@types/js-beautify": "^1.13.3",
+    "@types/toastify-js": "^1.11.1",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "@vitejs/plugin-legacy": "^2.0.0",
+    "eslint": "^8.20.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "sass": "^1.53.0",
+    "stylelint": "^14.9.1",
+    "stylelint-config-recommended-scss": "^7.0.0",
+    "stylelint-order": "^5.0.0",
+    "terser": "^5.14.2",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.2"
+  },
+  "dependencies": {
+    "clipboard": "^2.0.11",
+    "dom-element": "github:digikid/dom-element",
+    "js-beautify": "^1.14.4",
+    "normalize.css": "^8.0.1",
+    "toastify-js": "^1.11.2"
+  }
+}

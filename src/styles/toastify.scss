@@ -1,0 +1,15 @@
+@import 'partials';
+@import '../../node_modules/toastify-js/src/toastify';
+
+.toastify {
+    font-size: 14px;
+    color: var(--color-white);
+
+    &--success {
+        background-color: var(--color-green) !important;
+    }
+
+    &--error {
+        background: var(--color-red) !important;
+    }
+}

@@ -1,0 +1,61 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "airbnb-base"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "extends": [
+        "airbnb-base",
+        "airbnb-typescript/base"
+      ],
+      "parserOptions": {
+        "project": [
+          "./tsconfig.json"
+        ]
+      },
+      "rules": {
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-shadow": "off",
+        "import/prefer-default-export": "off",
+        "class-methods-use-this": "off",
+        "no-underscore-dangle": "off",
+        "no-param-reassign": "off",
+        "naming-convention": "off",
+        "no-shadow": "off",
+        "no-bitwise": "off",
+        "no-plusplus": "off",
+        "prefer-object-spread": "off",
+        "no-await-in-loop": "off",
+        "no-cond-assign": "off",
+        "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"]
+      }
+    }
+  ],
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "no-console": "off",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "max-len": "off",
+    "no-shadow": "off",
+    "no-param-reassign": "off",
+    "naming-convention": "off"
+  }
+}

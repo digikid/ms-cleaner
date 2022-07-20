@@ -1,0 +1,110 @@
+@use 'sass:math';
+@import 'partials';
+
+$size: 24px;
+$columns: 12;
+
+.mode {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $size;
+    height: $size;
+    cursor: pointer;
+
+    &:hover {
+        .ray {
+            @for $i from 1 through $columns {
+                &:nth-child(#{$i}) {
+                    transform: rotate(
+                        calc(calc(#{$i} * calc(360deg / #{$columns})) - 20deg)
+                    );
+                }
+            }
+        }
+    }
+
+    .dark-mode & {
+        background-color: transparent;
+
+        &:hover {
+            .moon {
+                transform: scale(1) translate(-3%, -18%);
+            }
+
+            .ray {
+                @for $i from 1 through $columns {
+                    &:nth-child(#{$i}) {
+                        transform: rotate(
+                            calc(calc(#{$i} * calc(360deg / #{$columns})) - 20deg)
+                        );
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sun {
+    width: $size;
+    height: $size;
+    border: 4px solid var(--color-bg);
+    border-radius: 50%;
+    background-color: var(--color-yellow);
+
+    .dark-mode & {
+        border-color: var(--color-editor-bg);
+        background-color: var(--color-yellow);
+    }
+}
+
+.ray {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    width: 2px;
+    height: 121%;
+    transition: 0.4s all, height 0.3s ease-in-out;
+    background: var(--color-yellow);
+
+    @for $i from 1 through $columns {
+        &:nth-child(#{$i}) {
+            transform: rotate(calc(#{$i} * calc(360deg / #{$columns})));
+        }
+    }
+
+    .dark-mode & {
+        height: 0;
+        transition: transform 0.4s, height 0.2s 0.1s;
+        background-color: transparent;
+
+        @for $i from 1 through $columns {
+            &:nth-child(#{$i}) {
+                transform: rotate(
+                    calc(calc(#{$i} * calc(360deg / #{$columns})) - 45deg)
+                );
+            }
+        }
+    }
+}
+
+.moon {
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    right: 0;
+    width: $size * 0.75;
+    height: $size * 0.75;
+    transition: 0.4s transform;
+    transform: scale(0) translate(25%, -25%);
+    transform-origin: right;
+    border-radius: 50%;
+    background-color: var(--color-bg);
+
+    .dark-mode & {
+        transform: scale(1) translate(11%, -11%);
+        background-color: var(--color-editor-bg);
+    }
+}

@@ -1,0 +1,17 @@
+@import 'partials';
+
+.button {
+    font-weight: 600;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 4px 7px;
+    border-radius: 6px;
+    background-color: var(--color-light-bg);
+
+    i {
+        margin-right: 7px;
+    }
+}
